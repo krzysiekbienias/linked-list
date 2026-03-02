@@ -23,6 +23,8 @@ public:
 
     bool contains(int val) const;
 
+    int countNodes( int val) const;
+
     friend std::ostream &operator<<(std::ostream &os, const LinkedList &list);
 
 

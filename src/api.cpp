@@ -71,6 +71,21 @@ bool LinkedList::contains(int val) const {
 
 }
 
+int LinkedList::countNodes(int val) const {
+    int freq=0;
+    if (m_head==nullptr) return 0;
+
+    Node* temp =m_head;
+    while (temp!=nullptr) {
+        if (temp->m_val==val) {
+            freq++;
+            temp=temp->next;
+        } else {
+            temp=temp->next;
+        }
+    }
+    return freq;
+}
 
 std::ostream& operator<<(std::ostream& os, const LinkedList& list) {
     const Node* current = list.m_head;

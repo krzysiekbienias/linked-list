@@ -233,3 +233,53 @@ TEST(LinkedListContains, DoesNotModifyList) {
     // ensure list structure unchanged
     EXPECT_EQ(toVector(list.getHead()), (std::vector<int>{1, 2, 3}));
 }
+
+TEST(LinkedListCountNodes, EmptyListReturnsZero) {
+    LinkedList list;
+    EXPECT_EQ(list.countNodes(5), 0);
+}
+
+TEST(LinkedListCountNodes, SingleNodeMatchReturnsOne) {
+    LinkedList list;
+    buildList(list, {7});
+    EXPECT_EQ(list.countNodes(7), 1);
+}
+
+TEST(LinkedListCountNodes, SingleNodeNoMatchReturnsZero) {
+    LinkedList list;
+    buildList(list, {7});
+    EXPECT_EQ(list.countNodes(3), 0);
+}
+
+TEST(LinkedListCountNodes, CountsMultipleOccurrences) {
+    LinkedList list;
+    buildList(list, {3, 5, 5, 5, 6, 8, 8, 10});
+
+    EXPECT_EQ(list.countNodes(5), 3);
+    EXPECT_EQ(list.countNodes(8), 2);
+    EXPECT_EQ(list.countNodes(3), 1);
+    EXPECT_EQ(list.countNodes(10), 1);
+}
+
+TEST(LinkedListCountNodes, ValueNotPresentReturnsZero) {
+    LinkedList list;
+    buildList(list, {1, 2, 3, 4});
+    EXPECT_EQ(list.countNodes(99), 0);
+}
+
+TEST(LinkedListCountNodes, WorksWithNegativeAndZeroValues) {
+    LinkedList list;
+    buildList(list, {0, -1, -1, 2, 0});
+
+    EXPECT_EQ(list.countNodes(0), 2);
+    EXPECT_EQ(list.countNodes(-1), 2);
+    EXPECT_EQ(list.countNodes(2), 1);
+}
+
+TEST(LinkedListCountNodes, DoesNotModifyList) {
+    LinkedList list;
+    buildList(list, {1, 2, 2, 3});
+
+    EXPECT_EQ(list.countNodes(2), 2);
+    EXPECT_EQ(toVector(list.getHead()), (std::vector<int>{1, 2, 2, 3}));
+}
