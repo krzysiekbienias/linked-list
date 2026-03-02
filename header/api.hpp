@@ -21,6 +21,7 @@ public:
 
     int getSize();
 
+    bool contains(int val) const;
 
     friend std::ostream &operator<<(std::ostream &os, const LinkedList &list);
 

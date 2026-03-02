@@ -168,3 +168,68 @@ TEST(LinkedListGetHead, ConstructorWithValueSetsHead) {
     EXPECT_EQ(head->m_val, 7);
     EXPECT_EQ(head->next, nullptr);
 }
+
+
+TEST(LinkedListContains, EmptyListReturnsFalse) {
+    LinkedList list;
+    EXPECT_FALSE(list.contains(10));
+}
+
+TEST(LinkedListContains, SingleElementFound) {
+    LinkedList list;
+    buildList(list, {42});
+
+    EXPECT_TRUE(list.contains(42));
+}
+
+TEST(LinkedListContains, SingleElementNotFound) {
+    LinkedList list;
+    buildList(list, {42});
+
+    EXPECT_FALSE(list.contains(99));
+}
+
+TEST(LinkedListContains, FindsValueAtBeginning) {
+    LinkedList list;
+    buildList(list, {3, 5, 7, 9});
+
+    EXPECT_TRUE(list.contains(3));
+}
+
+TEST(LinkedListContains, FindsValueInMiddle) {
+    LinkedList list;
+    buildList(list, {3, 5, 7, 9});
+
+    EXPECT_TRUE(list.contains(7));
+}
+
+TEST(LinkedListContains, FindsValueAtEnd) {
+    LinkedList list;
+    buildList(list, {3, 5, 7, 9});
+
+    EXPECT_TRUE(list.contains(9));
+}
+
+TEST(LinkedListContains, ReturnsFalseIfValueNotPresent) {
+    LinkedList list;
+    buildList(list, {1, 2, 3, 4});
+
+    EXPECT_FALSE(list.contains(8));
+}
+
+TEST(LinkedListContains, WorksWithDuplicates) {
+    LinkedList list;
+    buildList(list, {1, 2, 3, 2, 4});
+
+    EXPECT_TRUE(list.contains(2));
+}
+
+TEST(LinkedListContains, DoesNotModifyList) {
+    LinkedList list;
+    buildList(list, {1, 2, 3});
+
+    EXPECT_TRUE(list.contains(2));
+
+    // ensure list structure unchanged
+    EXPECT_EQ(toVector(list.getHead()), (std::vector<int>{1, 2, 3}));
+}

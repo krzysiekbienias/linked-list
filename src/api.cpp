@@ -56,6 +56,20 @@ Node * LinkedList::getHead() const {
     return m_head;
 }
 
+bool LinkedList::contains(int val) const {
+    Node* temp=m_head;
+    while (temp!=nullptr) {
+        if (temp->m_val==val) {
+
+            return true;
+        }
+        else {
+            temp=temp->next;
+        }
+    }
+    return false;
+
+}
 
 
 std::ostream& operator<<(std::ostream& os, const LinkedList& list) {
