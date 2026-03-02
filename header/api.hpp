@@ -1,6 +1,7 @@
 # pragma once
 
 #include "node.hpp"
+#include <ostream>
 
 class LinkedList {
 private:
@@ -12,6 +13,8 @@ public:
     explicit LinkedList(int val);
 
     ~LinkedList();
+    Node* getHead()const;
+
     void append(int val);
 
     bool isEmpty();
@@ -19,10 +22,12 @@ public:
     int getSize();
 
 
+    friend std::ostream &operator<<(std::ostream &os, const LinkedList &list);
 
-    //not allowed on copying alternative add copy cinstrukctor --> later
-    LinkedList(const LinkedList&) = delete;
-    LinkedList& operator=(const LinkedList&) = delete;
 
+    //not allowed on copying alternatively add copy constructor --> later
+    LinkedList(const LinkedList &) = delete;
+
+    LinkedList &operator=(const LinkedList &) = delete;
 };
 

@@ -1,21 +1,13 @@
-
-#include <gtest/gtest.h>
-
-// --- test-only hack: expose private members ---
 #define private public
 #include "api.hpp"
 #undef private
+#include "test_utils.hpp"
+#include "node.hpp"
+#include <gtest/gtest.h>
 
-// Helper: collect values from list into a std::vector<int>
-static std::vector<int> toVector(Node* head) {
-    std::vector<int> out;
-    Node* cur = head;
-    while (cur) {
-        out.push_back(cur->m_val);
-        cur = cur->next;
-    }
-    return out;
-}
+
+
+
 
 TEST(LinkedListAppend, AppendToEmptyListSetsHead) {
     LinkedList list;              // empty: head=nullptr, length=0
@@ -94,14 +86,14 @@ TEST(LinkedListAppend, AppendNegativeAndZerom_vals) {
 TEST(LinkedListEmpty, NewListIsEmpty) {
     LinkedList list;
 
-    EXPECT_TRUE(list.empty());
+    EXPECT_TRUE(list.isEmpty());
     EXPECT_EQ(list.getSize(), 0);
 }
 
 TEST(LinkedListEmpty, ListCreatedWithValueIsNotEmpty) {
     LinkedList list(10);
 
-    EXPECT_FALSE(list.empty());
+    EXPECT_FALSE(list.isEmpty());
     EXPECT_EQ(list.getSize(), 1);
 }
 
@@ -110,7 +102,7 @@ TEST(LinkedListEmpty, AppendMakesListNonEmpty) {
 
     list.append(5);
 
-    EXPECT_FALSE(list.empty());
+    EXPECT_FALSE(list.isEmpty());
     EXPECT_EQ(list.getSize(), 1);
 }
 
@@ -140,4 +132,39 @@ TEST(LinkedListSize, SizeZeroForFreshList) {
     LinkedList list;
 
     EXPECT_EQ(list.getSize(), 0);
+}
+
+TEST(LinkedListGetHead, EmptyListReturnsNullptr) {
+    LinkedList list;
+    EXPECT_EQ(list.getHead(), nullptr);
+}
+
+TEST(LinkedListGetHead, SingleElementListReturnsNonNullHeadWithValue) {
+    LinkedList list;
+    list.append(42);
+
+    Node* head = list.getHead();
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->m_val, 42);
+    EXPECT_EQ(head->next, nullptr);
+}
+
+TEST(LinkedListGetHead, AppendKeepsHeadPointingToFirstNode) {
+    LinkedList list;
+    buildList(list, {3, 5, 6});
+
+    Node* head = list.getHead();
+    ASSERT_NE(head, nullptr);
+
+    EXPECT_EQ(head->m_val, 3);  // head stays the first inserted value
+    EXPECT_EQ(toVector(head), (std::vector<int>{3, 5, 6}));
+}
+
+TEST(LinkedListGetHead, ConstructorWithValueSetsHead) {
+    LinkedList list(7);
+
+    Node* head = list.getHead();
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->m_val, 7);
+    EXPECT_EQ(head->next, nullptr);
 }

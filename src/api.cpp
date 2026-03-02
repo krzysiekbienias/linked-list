@@ -25,6 +25,8 @@ LinkedList::~LinkedList() {
 }
 
 
+
+
 void LinkedList::append(int val) {
     Node * newNode= new Node(val);
     if (m_head==nullptr) {
@@ -50,4 +52,23 @@ int LinkedList::getSize() {
     return m_length;
 }
 
+Node * LinkedList::getHead() const {
+    return m_head;
+}
+
+
+
+std::ostream& operator<<(std::ostream& os, const LinkedList& list) {
+    const Node* current = list.m_head;
+
+    while (current != nullptr) {
+        os << current->m_val;
+        if (current->next != nullptr) os << " -> ";
+        current = current->next;
+    }
+    os << " -> null\n";
+    os << "size = " << list.m_length;
+
+    return os;
+}
 
