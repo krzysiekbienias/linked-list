@@ -15,6 +15,14 @@ option(ENABLE_DEV_MAIN "Build dev_main executable (experiments)" ON)
 
 add_library(core_lib STATIC
         src/core_lib.cpp
+        src/node.cpp
+        src/api.cpp
+        src/remove_duplicates_from_sorted_list.cpp
+        src/middle_node.cpp
+        src/is_palindrome.cpp
+        src/reverse_linked_list.cpp
+        src/remove_kth_node.cpp
+        src/add_two_numbers.cpp
         # add more .cpp here as project grows
 )
 
