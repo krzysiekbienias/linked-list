@@ -23,3 +23,11 @@ inline void buildList(LinkedList& ll, std::initializer_list<int> values) {
         ll.append(x);
     }
 }
+
+inline void freeList(Node* head) {
+    while (head) {
+        Node* next = head->next;
+        delete head;
+        head = next;
+    }
+}

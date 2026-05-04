@@ -40,9 +40,9 @@ TEST(PurgeRepeateNodesFromUnlortedLL,DuplicatesOnBegginig) {
     buildList(ll,{2,2,3,3,4,5,5,6});
 
     Node *actual=deleteDuplicatesUnsorted(ll.getHead());
+    ll.setHead(nullptr);
     std::vector<int>actualVec=toVector(actual);
     std::vector<int> expected={4,6};
     EXPECT_EQ(actualVec,expected);
-
-
+    freeList(actual);
 }
