@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Clang 17 arm64",
+    "compilers": {
+      "C": "/usr/bin/clang",
+      "CXX": "/usr/bin/clang++"
+    },
+    "isTrusted": true
+  }
+]

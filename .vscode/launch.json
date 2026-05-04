@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug: dev_main",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/cmake-build-debug/dev_main",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: build"
+        },
+        {
+            "name": "Debug: app",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/cmake-build-debug/app",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: build"
+        },
+        {
+            "name": "Debug: test_environment (all tests)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/cmake-build-debug/test_environment",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: build"
+        },
+        {
+            "name": "Debug: test_environment (filter)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/cmake-build-debug/test_environment",
+            "args": ["--gtest_filter=${input:gtestFilter}"],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: build"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "gtestFilter",
+            "type": "promptString",
+            "description": "GTest filter (e.g. MyTest.* or MyTest.MyCase)",
+            "default": "*"
+        }
+    ]
+}

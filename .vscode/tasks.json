@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake: configure",
+            "type": "shell",
+            "command": "cmake -S . -B cmake-build-debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": "build",
+            "presentation": { "reveal": "always", "panel": "shared" }
+        },
+        {
+            "label": "CMake: build",
+            "type": "shell",
+            "command": "cmake --build cmake-build-debug --parallel",
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": { "kind": "build", "isDefault": true },
+            "presentation": { "reveal": "always", "panel": "shared" }
+        },
+        {
+            "label": "CMake: run tests",
+            "type": "shell",
+            "command": "ctest --test-dir cmake-build-debug --output-on-failure",
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": { "kind": "test", "isDefault": true },
+            "presentation": { "reveal": "always", "panel": "shared" },
+            "dependsOn": ["CMake: build"]
+        }
+    ]
+}
