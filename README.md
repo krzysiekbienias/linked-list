@@ -47,4 +47,4 @@ This dual approach builds both engineering discipline and interview readiness.
 | Remove Elements by Value | `src/remove_element.cpp` | Sentinel node |
 | Has Cycle | `src/has_cycle.cpp` | Floyd's tortoise & hare (phase 1) |
 | Find Cycle Origin | `src/find_cycle_origin.cpp` | Floyd's tortoise & hare (phase 1 + 2) |
-| Delete Middle Node | `src/delete_middle.cpp` | Slow/fast pointers — in progress |
+| Delete Middle Node | `src/delete_middle.cpp` | Dummy + slow/fast to stop before middle |

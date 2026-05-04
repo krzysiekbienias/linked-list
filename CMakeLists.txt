@@ -31,6 +31,7 @@ add_library(core_lib STATIC
         src/merge_sorted_lists.cpp
         src/has_cycle.cpp
         src/find_cycle_origin.cpp
+        src/delete_middle.cpp
 
         # add more .cpp here as project grows
 )
