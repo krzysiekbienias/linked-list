@@ -10,6 +10,7 @@ Node* removeDuplicatesFromSortedList(Node* head) {
             Node* duplicate=current->next;
             current->next=current->next->next;
             delete duplicate;
+            duplicate=nullptr;
         }
         else
             current=current->next;
