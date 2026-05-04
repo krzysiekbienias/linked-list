@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(<project_name> LANGUAGES CXX)
+project(linked_list LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -18,11 +18,20 @@ add_library(core_lib STATIC
         src/node.cpp
         src/api.cpp
         src/remove_duplicates_from_sorted_list.cpp
+        src/remove_duplicates_unsorted.cpp
         src/middle_node.cpp
+        src/insert_node.cpp
         src/is_palindrome.cpp
         src/reverse_linked_list.cpp
         src/remove_kth_node.cpp
         src/add_two_numbers.cpp
+        src/linked_list_frequency.cpp
+        src/remove_element.cpp
+        src/merging_linked_list.cpp
+        src/merge_sorted_lists.cpp
+        src/has_cycle.cpp
+        src/find_cycle_origin.cpp
+
         # add more .cpp here as project grows
 )
 
