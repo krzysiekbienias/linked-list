@@ -4,6 +4,15 @@
 #include "test_utils.hpp"
 
 
+TEST(ReverseLinkedListTests, FromAlgoExpert) {
+    LinkedList ll;
+    buildList(ll, {0,1,2,3,4,5});
+    Node* revHead = reverseLinkedList(ll.getHead());
+    std::vector<int> actual=toVector(revHead);
+    std::vector<int> expected ={5,4,3,2,1,0};
+    EXPECT_EQ(actual, expected);
+}
+
 
 TEST(ReverseLinkedListTests, EmptyList_ReturnsNullptr) {
     LinkedList ll;
