@@ -32,6 +32,7 @@ add_library(core_lib STATIC
         src/has_cycle.cpp
         src/find_cycle_origin.cpp
         src/delete_middle.cpp
+        src/rotate_list.cpp
 
         # add more .cpp here as project grows
 )

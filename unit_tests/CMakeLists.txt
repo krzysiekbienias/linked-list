@@ -1,5 +1,6 @@
 file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS
         "${CMAKE_CURRENT_SOURCE_DIR}/test_*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/test_utils.hpp"
 )
 
 if(TEST_SOURCES STREQUAL "")
@@ -14,6 +15,10 @@ set_target_properties(test_environment PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 
+target_include_directories(test_environment
+        PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}   # <-- allows #include "test_utils/..."
+)
 
 target_link_libraries(test_environment
         PRIVATE

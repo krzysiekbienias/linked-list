@@ -1,6 +1,9 @@
 #include <iostream>
+#include "../header/api.hpp"
+#include "../unit_tests/test_utils.hpp"
 
 int main() {
-    std::cout << "Welcome in dev main 🧪";
-    return 0;
+    LinkedList ll;
+    buildList(ll, {4, 5, 8});
+    std::cout << ll << std::endl;
 }

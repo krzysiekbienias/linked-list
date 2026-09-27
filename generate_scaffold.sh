@@ -76,8 +76,6 @@ $'#include <string>\n#include <vector>\n\n
 
 create_if_missing "$HEADER_FILE" \
 $'#pragma once\n\n
-#include <string>
-#include <vector>
 #include "node.hpp"'
 
 

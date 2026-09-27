@@ -11,8 +11,5 @@ bool hasCycle(Node* head) {
             return true;
         }
     }
-    
-    
     return false;
 }
-

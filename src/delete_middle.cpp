@@ -13,5 +13,4 @@ Node* deleteMiddle(Node* head) {
     //now slow is exatly one before middle
     slow->next=slow->next->next;
     return dummy.next;
-
 }

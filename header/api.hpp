@@ -15,6 +15,8 @@ public:
     ~LinkedList();
     Node* getHead()const;
 
+    void setHead(Node* newHead);
+
     void append(int val);
 
     bool isEmpty();

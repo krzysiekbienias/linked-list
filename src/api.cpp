@@ -56,6 +56,10 @@ Node * LinkedList::getHead() const {
     return m_head;
 }
 
+void LinkedList::  setHead(Node* newHead) {
+    m_head=newHead;
+}
+
 bool LinkedList::contains(int val) const {
     Node* temp=m_head;
     while (temp!=nullptr) {
